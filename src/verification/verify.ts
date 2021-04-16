@@ -33,10 +33,15 @@ const trimByteCode = (solidityVersion: string) => (byteCode: string) => {
     if (solidityMinorVersion >= 5 && solidityPatchVersion >= 11) {
       byteCodeEnd = byteCodeEnd511
     }
-
-    return byteCode.split(byteCodeStart)[1].split(byteCodeEnd)[0]
+    console.log("split starting")
+    let first = byteCode.split(byteCodeStart)[1]
+    console.log("start found")
+    let end = first.split(byteCodeEnd)[0]
+    console.log("end found")
+    return end;
   } catch
     (e) {
-  throw new Error('Cant trim bytecode by starting pointer and meta section')
+    throw new Error('Cant trim bytecode by starting pointer and meta section')
+    
   }
 }
